@@ -10,10 +10,6 @@ from scipy.signal import welch
 
 from modelrythm import RhythmMamba
 
-# =====================================
-# CONFIG
-# =====================================
-
 FPS = 29.26
 
 BUFFER_SIZE = 256
@@ -22,9 +18,6 @@ IMG_SIZE = 72
 
 DEVICE = torch.device("cpu")
 
-# =====================================
-# BANDPASS FILTER
-# =====================================
 
 def butter_bandpass(data, fs=FPS):
 
@@ -37,13 +30,10 @@ def butter_bandpass(data, fs=FPS):
         4,
         [low / nyq, high / nyq],
         btype='band'
-    )
+    );
 
     return filtfilt(b, a, data)
 
-# =====================================
-# BPM ESTIMATION
-# =====================================
 
 def estimate_bpm(signal):
 
@@ -76,10 +66,6 @@ def estimate_bpm(signal):
 
     return bpm, confidence, signal
 
-# =====================================
-# LOAD MODEL
-# =====================================
-
 model = RhythmMamba()
 
 model.load_state_dict(
@@ -94,9 +80,6 @@ model.eval()
 
 print("Model loaded")
 
-# =====================================
-# MEDIAPIPE
-# =====================================
 
 mp_face = mp.solutions.face_detection
 
@@ -105,9 +88,6 @@ face_detector = mp_face.FaceDetection(
     min_detection_confidence=0.6
 )
 
-# =====================================
-# CAMERA
-# =====================================
 
 cap = cv2.VideoCapture(0)
 
@@ -119,9 +99,6 @@ display_bpm = 0
 
 print("Starting live BPM monitor...")
 
-# =====================================
-# MAIN LOOP
-# =====================================
 
 while cap.isOpened():
 
@@ -192,9 +169,6 @@ while cap.isOpened():
                 2
             )
 
-    # =================================
-    # INFERENCE
-    # =================================
 
     if len(frame_buffer) == BUFFER_SIZE:
 
@@ -227,18 +201,11 @@ while cap.isOpened():
 
             bpm, confidence, clean_wave = estimate_bpm(pred)
 
-            # =================================
-            # CONFIDENCE FILTER
-            # =================================
-
             if confidence > 0.001:
 
                 bpm_history.append(bpm)
 
-                # =================================
-                # TEMPORAL SMOOTHING
-                # =================================
-
+               
                 display_bpm = int(
                     np.median(bpm_history)
                 )
@@ -246,9 +213,6 @@ while cap.isOpened():
         except:
             pass
 
-        # =================================
-        # LIVE WAVEFORM
-        # =================================
 
         wave = clean_wave[-200:]
 
@@ -272,10 +236,7 @@ while cap.isOpened():
                 2
             )
 
-    # =================================
-    # DISPLAY BPM
-    # =================================
-
+   
     cv2.putText(
         frame,
         f"BPM: {display_bpm}",

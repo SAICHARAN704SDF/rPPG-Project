@@ -16,11 +16,11 @@ DEVICE = torch.device("cpu")
 model = RhythmMamba()
 try:
     # Use weights_only=True for safety
-    model.load_state_dict(torch.load("rppg_best_model.pth", map_location=DEVICE, weights_only=True))
+    model.load_state_dict(torch.load("rythmmamba.pth", map_location=DEVICE, weights_only=True))
     model.eval()
-    print("✅ Model loaded successfully on Mac.")
+    print(" Model loaded successfully on Mac.")
 except Exception as e:
-    print(f"❌ Error loading model: {e}")
+    print(f" Error loading model: {e}")
     exit()
 
 # 3. Initialize MediaPipe Face Mesh
@@ -35,7 +35,7 @@ face_mesh = mp_face_mesh.FaceMesh(
 cap = cv2.VideoCapture(0) # Open Mac Webcam
 frame_buffer = []
 
-print("🚀 System Ready. Please stay still and look at the camera...")
+print("System Ready. Please stay still and look at the camera...")
 
 while cap.isOpened():
     success, frame = cap.read()
