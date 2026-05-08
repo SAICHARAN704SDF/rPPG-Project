@@ -1,10 +1,10 @@
 # rPPG-Project
 
-## 📋 Overview
+##  Overview
 
 **rPPG-Project** is a comprehensive remote photoplethysmography (rPPG) solution for heart rate estimation and health monitoring using deep learning models and modern neural network architectures.
 
-## ✨ Features
+##  Features
 
 - **Multiple Model Architectures**
   - RhythmMamba models (best & standard versions)
@@ -25,7 +25,7 @@
   - `deep_rppg_model.pkl` - Deep learning RPPG model
   - `bpm_model.pkl` - BPM estimation model
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Requirements
 - Python 3.8+
@@ -56,7 +56,7 @@ python live_stable.py
 python live_test.py
 ```
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 rPPG-Project/
@@ -74,7 +74,7 @@ rPPG-Project/
 └── README.md
 ```
 
-## 🔧 Model Details
+##  Model Details
 
 ### RhythmMamba Models
 State-of-the-art sequential models for HR estimation with temporal dependencies.
@@ -85,11 +85,10 @@ Deep transformer architecture for capturing complex temporal patterns in video d
 ### Deep RPPG Model
 Convolutional neural network optimized for remote PPG signal extraction.
 
-## 📊 Performance
+##  Performance
+All models are trained and ready for inference. They have been validated on standard rPPG datasets.
 
-All models are pre-trained and ready for inference. They have been validated on standard rPPG datasets.
-
-## 📝 License & Copyright
+##  License & Copyright
 
 **Copyright © 2026 - All rights reserved**
 
@@ -105,15 +104,14 @@ This project and all associated code, models, and documentation are the exclusiv
   - Do not use for commercial purposes without authorization
   - Do not reverse engineer or extract models for redistribution
 
-For licensing inquiries or permissions, contact: **saicharankailasa@gmail.com**
 
-## 👨‍💻 Author
+##  Author
 
 ** Charan Kailasa**
 - GitHub: [@SAICHARAN704SDF](https://github.com/SAICHARAN704SDF)
 - Email: saicharankailasa@gmail.com
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 Special thanks to the deep learning and computer vision research communities for foundational work in remote photoplethysmography.
 
